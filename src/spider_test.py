@@ -1,7 +1,15 @@
 import requests
 from bs4 import BeautifulSoup
 #inpit url
-inString = input("What are we looking for? (Health (H) or Science (S))")
+
+print()
+print()
+
+inString = input("What are we looking for? (Health (H) or Science (S)) =  ")
+
+print()
+print()
+
 #stores url
 url = 'https://www.example.com/'
 
@@ -20,19 +28,34 @@ soup = BeautifulSoup(r.content, 'html.parser')
 
 con_article = soup.find(class_="component__item-wrapper")
 
-article_list = con_article.find_all(class_='item__anchor')
+#article_list = con_article.find_all(class_='item__anchor')
 
 
 for con_link in con_article.find_all('a'):
-    #link_name = con_article.find('a') #.text.split('/')
+    #print(con_link.get('href'))
+    use_link = con_link.get('href')
     
-    print(con_link.get('href'))
+    try:
+        r = requests.get(use_link)
+        soup = BeautifulSoup(r.content, 'html.parser')
     
-
-
-#for link in soup.find_all('a', href=True):
-#    print(link['href'])
+        link_article = soup.find(class_="content__body")   
         
+        print()
+        print()
+    
+        for link_quote in link_article.find('p'):
+            print(link_quote.getText())
+            
+    except:
+        print()
+        print()
+        print("error")     
+    
+    
+        
+    
+            
     
 # searches only specific link names
 
