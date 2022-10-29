@@ -1,6 +1,7 @@
 from queue import Empty
 import requests
 import crawlCbsNews
+import crawlAbcNews
 import filter
 from bs4 import BeautifulSoup
 from fileHandler import createIgnoredByDefaultList
@@ -56,6 +57,9 @@ def readNewsPage(url):
     if url.startswith("https://www.cbsnews.com"):
         crawlCbsNews.printArticle(url)
         crawlCbsNews.printRelatedArticles(url)
+    if url.startswith("https://abcnews.go.com"):
+        crawlAbcNews.printArticle(url)
+        crawlAbcNews.printRelatedArticles(url)
     else:
         webpageNotSupported(url)
         
