@@ -5,6 +5,7 @@ import crawlCbsNews
 import crawlAbcNews
 import crawlNewsy
 import crawlBloomberg
+import crawlCnbcNews
 import filter
 from bs4 import BeautifulSoup
 from fileHandler import createIgnoredByDefaultList
@@ -69,6 +70,9 @@ def readNewsPage(url):
     elif url.startswith("https://www.bloomberg.com"):
         crawlBloomberg.printArticle(url)
         crawlBloomberg.printRelatedArticles(url)
+    elif url.startswith("https://www.cnbc.com"):
+        crawlCnbcNews.printArticle(url)
+        crawlCnbcNews.printRelatedArticles(url)
     else:
         webpageNotSupported(url)
         
