@@ -1,5 +1,5 @@
 from enum import Enum
-inputType = Enum('inputType', ['INTERESTED_IN', 'NOT_INTERESTED_IN'])
+inputType = Enum('inputType', ['INTERESTED_IN', 'NOT_INTERESTED_IN', 'URLS'])
 
 def writeListToFile(list, inputType):
     newFile = createFile(inputType)
@@ -14,6 +14,7 @@ def createListFromFile(inputType):
     print(inputType)
     with inputFile as file:
         lines = [line.rstrip() for line in file]
+        file.close()
     return lines
 
     
@@ -28,4 +29,6 @@ def getFileName(inputType):
         return "interestedIn.txt"
     elif inputType == inputType.NOT_INTERESTED_IN:
         return "notInterestedIn.txt"
+    elif inputType == inputType.URLS:
+        return "urls.txt"
     print('inputType ' + inputType + ' not existing')
