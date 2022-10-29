@@ -1,3 +1,4 @@
+from tkinter import N
 from dialogHelpers import askForUserInterestsDialog, printCurrentInterests, askForReconfiguration, askForUserNameDialog
 from fileHandler import userInputFilesExisting, createListFromFile, inputType
 import spider
@@ -30,7 +31,7 @@ allRelevantUrls = spider.crawlAllRelevantUrls(baseUrls, createListFromFile(input
 
 print("Your results:")
 for url in allRelevantUrls:
-    print(url)
+    spider.readNewsPage(url)
 print()
 
 print("--------------------------------- END ------------------------------------")

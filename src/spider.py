@@ -1,4 +1,8 @@
+from queue import Empty
+import re
+from types import NoneType
 import requests
+import crawlCbsNews
 import filter
 from bs4 import BeautifulSoup
 from fileHandler import createIgnoredByDefaultList
@@ -11,6 +15,9 @@ def crawlAllRelevantUrls(baseUrls, interestedIn, notInterestedIn):
     soups = getSoups(baseUrls)
     urlsPerBaseUrls = list(map(lambda soup: crawlRelevantUrlsPerSoup(soup, interestedIn, notInterestedIn), soups))
     return flattenUrlList(urlsPerBaseUrls, baseUrls)
+
+def webpageNotSupported(url):
+    print("We are sorry, this webpage is not supported: " + url)
     
 def flattenUrlList(urlsPerBaseUrls, baseUrls):
     flatList = []
@@ -37,6 +44,9 @@ def getSoupPerUrl(url):
 # return:           list(str)       filtered url list
 def crawlRelevantUrlsPerSoup(soup, interestedIn, notInterestedIn):
     urls = list(map(lambda x: x['href'], soup.find_all('a', href=True)))
+    return filterUrls(urls, interestedIn, notInterestedIn)
+
+def filterUrls(urls, interestedIn, notInterestedIn):
     urls = filter.findStringsNotContainingKeywords(urls, createIgnoredByDefaultList())
     if interestedIn != []:
         urls = filter.findStringsContainingKeyword(urls, interestedIn)
@@ -44,12 +54,10 @@ def crawlRelevantUrlsPerSoup(soup, interestedIn, notInterestedIn):
         urls = filter.findStringsNotContainingKeywords(urls, notInterestedIn)
     return urls
 
-def readCbsNewsPage(soup):
-    con_article = soup.find(class_="component__item-wrapper")
-
-    article_list = con_article.find_all(class_='item__anchor')
-
-    for con_link in con_article.find_all('a'):
-        #link_name = con_article.find('a') #.text.split('/')
-        print(con_link.get('href'))
+def readNewsPage(url):
+    if url.startswith("https://www.cbsnews.com"):
+        crawlCbsNews.printArticle(url)
+        crawlCbsNews.printRelatedArticles(url)
+    else:
+        webpageNotSupported(url)
         
