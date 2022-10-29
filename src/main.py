@@ -28,7 +28,7 @@ for baseUrl in baseUrls:
 print()
 
 
-print(spider.crawlAllRelevantUrls(baseUrls, createListFromFile(inputType.INTERESTED_IN), createListFromFile(inputType.NOT_INTERESTED_IN)))
+#print(spider.crawlAllRelevantUrls(baseUrls, createListFromFile(inputType.INTERESTED_IN), createListFromFile(inputType.NOT_INTERESTED_IN)))
 
 print("----------------------------------END-------------------------------------")
 print()

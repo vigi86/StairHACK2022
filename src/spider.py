@@ -9,11 +9,11 @@ def crawlAllRelevantUrls(baseUrls, interestedIn, notInterestedIn):
     return relevantUrls
     
 def getSoups(urls):
-    #soups = []
-    #for url in urls:
-    #    soups.append(getSoupPerUrl(url))
-    #return soups
-    return list(map(lambda url: getSoupPerUrl(url), urls))
+    soups = []
+    for url in urls:
+        soups.append(getSoupPerUrl(url))
+    return soups
+    #return list(map(lambda url: getSoupPerUrl(url), urls))
 
 def getSoupPerUrl(url):
     r = requests.get(url)
