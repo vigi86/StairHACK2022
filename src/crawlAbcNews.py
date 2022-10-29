@@ -27,9 +27,3 @@ def printRelatedArticles(url):
     if con_article:
         for link in con_article.find_all('a'):
             printArticle(link.get('href'))
-
-# searches only specific link names
-
-# for a in soup.findAll('a'):
-# if 'word' in a['href']:
-#    print 'found a url with 'word' in the link'

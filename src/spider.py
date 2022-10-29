@@ -3,7 +3,6 @@ from queue import Empty
 import requests
 import crawlCbsNews
 import crawlAbcNews
-import crawlNewsy
 import crawlBloomberg
 import crawlCnbcNews
 import filter
@@ -64,9 +63,6 @@ def readNewsPage(url):
     elif url.startswith("https://abcnews.go.com"):
         crawlAbcNews.printArticle(url)
         crawlAbcNews.printRelatedArticles(url)
-    elif url.startswith("https://www.newsy.com"):
-        crawlNewsy.printArticle(url)
-        crawlNewsy.printRelatedArticles(url)
     elif url.startswith("https://www.bloomberg.com"):
         crawlBloomberg.printArticle(url)
         crawlBloomberg.printRelatedArticles(url)

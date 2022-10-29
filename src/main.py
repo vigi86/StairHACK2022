@@ -3,7 +3,7 @@ from dialogHelpers import askForUserInterestsDialog, printCurrentInterests, askF
 from fileHandler import userInputFilesExisting, createListFromFile, inputType
 import spider
 
-appName = "TrueNews"
+appName = "NewsRazor"
 
 #ask for the username
 user = askForUserNameDialog()

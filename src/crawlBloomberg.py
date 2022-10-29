@@ -9,7 +9,7 @@ def printArticle(url):
         print("source: "+ url)
         
         text = ''
-        for headlines in soup.find("h3"):
+        for headlines in soup.find("h1"):
             text += headlines.getText()
 
         print(text, end='\n\n\n')
@@ -19,11 +19,5 @@ def printArticle(url):
         var = 0
 
 def printRelatedArticles(url):
-    httpResponse = requests.get(url)
-    soup = BeautifulSoup(httpResponse.content, 'html.parser')
-    
-    con_article = soup.find(class_="hub-zone-righty__content")
-
-    if con_article:
-        for link in con_article.find_all('a'):
-            printArticle(link.get('href'))
+    a = 1
+    # not required
