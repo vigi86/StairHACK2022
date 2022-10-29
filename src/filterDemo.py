@@ -13,34 +13,49 @@ s = [
 #print(onlyStringsWithKeyword(s, "hallo"))
 #print()
 
-# example usage for getting the strings WITHOUT 1 keyword
-#print(onlyStringsWithoutKeyword(s, "This"))
-#print(onlyStringsWithoutKeyword(s, "schnabulieren"))
-#print(onlyStringsWithoutKeyword(s, "hallo"))
-#print()
-
 # example usage for getting the strings WITH 1 or 2 of keywords
-print("-------------- This is a test: --------")
+print("-------------- Test 1: --------")
 print(onlyStringsWithAnyOfKeywords(s, ["This"]))
-print("-------------- This is a test: --------")
+# output:
+# {'This is an input with a specific keyword (schnabulieren)', 'This is an input without a specific keyword (zaggzagg)'}
+
+print("-------------- Test 2: --------")
 print(onlyStringsWithAnyOfKeywords(s, ["schnabulieren"]))
-print("-------------- This is a test: --------")
+# output:
+# {'This is an input with a specific keyword (schnabulieren)', 'schnabulieren'}
+
+print("-------------- Test 3: --------")
 print(onlyStringsWithAnyOfKeywords(s, ["This", "schnabulieren"]))
-print("-------------- This is a test: --------")
+# output:
+# {'schnabulieren', 'This is an input with a specific keyword (schnabulieren)', 'This is an input without a specific keyword (zaggzagg)'}
+
+print("-------------- Test 4: --------")
 print(onlyStringsWithAnyOfKeywords(s, ["hallo"]))
+# output:
+# set()
+
 print()
 
-# example usage for getting the strings WITHOUT 1 keyword
-
+# example usage for getting the strings WITHOUT at least 1 keyword
 print("=======================================")
-print("-------------- This is a test: --------")
-print(onlyStringsWithoutAnyOfKeywords(s, "This"))
-print("-------------- This is a test: --------")
-print(onlyStringsWithoutAnyOfKeywords(s, "schnabulieren"))
-print("-------------- This is a test: --------")
+print("-------------- Test 1: --------")
+print(onlyStringsWithoutAnyOfKeywords(s, ["This"]))
+# output:
+# {'schnabulieren', 'Test'}
+
+print("-------------- Test 2: --------")
+print(onlyStringsWithoutAnyOfKeywords(s, ["schnabulieren"]))
+# output:
+# {'Test', 'This is an input without a specific keyword (zaggzagg)'}
+
+print("-------------- Test 3: --------")
 print(onlyStringsWithoutAnyOfKeywords(s, ["This", "schnabulieren"]))
-print("-------------- This is a test: --------")
-print(onlyStringsWithoutAnyOfKeywords(s, "hallo"))
+# output:
+# {'Test'}
+
+print("-------------- Test 4: --------")
+print(onlyStringsWithoutAnyOfKeywords(s, ["hallo"]))
+# output:
+# {'schnabulieren', 'Test', 'This is an input with a specific keyword (schnabulieren)', 'This is an input without a specific keyword (zaggzagg)'}
+
 print()
-
-
