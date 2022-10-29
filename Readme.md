@@ -1,13 +1,14 @@
-## Ideas
+## concreate functionality ideas
+* multiuser capability
+* ask the user if they want to change there interests if a file exist
+  * if yes, override the files with new interests / dislikes
+  * if no, just read the existing files
+
+## other Ideas
 * filter out daily news, as they are most often not benefitial
 * filter *for* specific topics
 * filter *out* specific topics
 * find positive news only
-* multiuser capability
-
-
-
-## other Ideas
 * "scroll stopper"-extension which stops you from scrolling through the news for hours
 
 
