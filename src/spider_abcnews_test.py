@@ -1,9 +1,5 @@
 import requests
 from bs4 import BeautifulSoup
-#inpit url
-
-print()
-print()
 
 inString = ''
 
@@ -32,13 +28,12 @@ while(inString != 'quit'):
 
                 link_article = soup.find('div', attrs={"data-testid": 'prism-headline'})
 
-                # text = ''
-                # for link_quote in link_article.find('p'):
-                #     text += link_quote.getText()
+                text = ''
+                for link_quote in link_article.find('p'):
+                    text += link_quote.getText()
 
-                # print(text, end='\n\n\n')
+                print(text, end='\n\n\n')
                 
-                print(link_article)
 
             except:
                 # do nothing and continue fetch
