@@ -57,16 +57,16 @@ def filterUrls(urls, interestedIn, notInterestedIn):
     return urls
 
 def readNewsPage(url):
-    # if url.startswith("https://www.cbsnews.com"):
-    #     crawlCbsNews.printArticle(url)
-    #     crawlCbsNews.printRelatedArticles(url)
-    # if url.startswith("https://abcnews.go.com"):
-    #     crawlAbcNews.printArticle(url)
-    #     crawlAbcNews.printRelatedArticles(url)
-    # if url.startswith("https://www.newsy.com"):
-    #     crawlNewsy.printArticle(url)
-    #     crawlNewsy.printRelatedArticles(url)
-    if url.startswith("https://www.bloomberg.com"):
+    if url.startswith("https://www.cbsnews.com"):
+        crawlCbsNews.printArticle(url)
+        crawlCbsNews.printRelatedArticles(url)
+    elif url.startswith("https://abcnews.go.com"):
+        crawlAbcNews.printArticle(url)
+        crawlAbcNews.printRelatedArticles(url)
+    elif url.startswith("https://www.newsy.com"):
+        crawlNewsy.printArticle(url)
+        crawlNewsy.printRelatedArticles(url)
+    elif url.startswith("https://www.bloomberg.com"):
         crawlBloomberg.printArticle(url)
         crawlBloomberg.printRelatedArticles(url)
     else:
