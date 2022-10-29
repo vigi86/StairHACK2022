@@ -1,18 +1,17 @@
-from helpers import getTheUsersInterests
-from fileHandler import writeListToFile, createListFromFile, inputType
+from dialogHelpers import askForUserInterestsDialog, printCurrentInterests, askForReconfiguration
+from fileHandler import userInputFilesExisting
 
 # greetings to the user
-# maybe add asking for username
 print("Welcome to TrueNews")
 
-# get the users interests
-print("What are you you interested in? (enter q to quit)")
-writeListToFile(getTheUsersInterests(), inputType.INTERESTED_IN)
+# maybe add asking for username
 
-# get what the user would rather not see
-print("What would you rather not see?")
-writeListToFile(getTheUsersInterests(), inputType.NOT_INTERESTED_IN)
-
-print(createListFromFile(inputType.URLS))
+# check configuration and ask on how to continue
+if not userInputFilesExisting():
+    askForUserInterestsDialog()
+else:
+    printCurrentInterests()
+    if askForReconfiguration():
+        askForUserInterestsDialog()
 
 print("----------------------------------END-------------------------------------")
