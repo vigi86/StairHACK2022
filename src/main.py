@@ -27,8 +27,12 @@ for baseUrl in baseUrls:
     print(baseUrl)
 print()
 
+allRelevantUrls = spider.crawlAllRelevantUrls(baseUrls, createListFromFile(inputType.INTERESTED_IN), createListFromFile(inputType.NOT_INTERESTED_IN))
 
-#print(spider.crawlAllRelevantUrls(baseUrls, createListFromFile(inputType.INTERESTED_IN), createListFromFile(inputType.NOT_INTERESTED_IN)))
+print("Your results:")
+for url in allRelevantUrls:
+    print(url)
+print()
 
 print("----------------------------------END-------------------------------------")
 print()
