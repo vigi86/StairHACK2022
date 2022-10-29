@@ -1,0 +1,7 @@
+/sitemap
+#
+/advertising
+/cookies
+/policy
+/terms-of-use
+/app/?
