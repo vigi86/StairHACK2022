@@ -28,7 +28,7 @@ while(True):
     try:
         urlMapper = {"section":[],"url":[]}
 
-        for link in con_article.find_all('a'):
+        for link in set(con_article.find_all('a')):
             use_link = link.get('href')
             if use_link == '#':
                 continue
@@ -61,7 +61,7 @@ while(True):
 
         try:
             con_article = soup.find(class_="component__item-wrapper")
-            for link in con_article.find_all('a'):
+            for link in set(con_article.find_all('a')):
                 use_link = link.get('href')
 
                 try:

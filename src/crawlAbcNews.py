@@ -25,5 +25,5 @@ def printRelatedArticles(url):
     con_article = soup.find(class_="ContentRoll")
 
     if con_article:
-        for link in con_article.find_all('a'):
+        for link in set(con_article.find_all('a')):
             printArticle(link.get('href'))

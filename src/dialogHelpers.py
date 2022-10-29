@@ -14,7 +14,7 @@ def askForUserInterestsDialog(user):
 def getTheUsersInterests(minOneTopicRequired):
     oneRequired = ""
     if minOneTopicRequired:
-        oneRequired = "(min 1 is required; keep it broad, e.g. health, politics, ...)"
+        oneRequired = "(min 1 is required; keep it broad, e.g. health, politics, ...) "
     userInput = input("Enter a topic: " + oneRequired)
     userInputList = []
     

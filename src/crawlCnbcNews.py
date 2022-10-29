@@ -26,6 +26,6 @@ def printRelatedArticles(url):
     con_article = soup.find(class_="PageBuilder-col-9 PageBuilder-col")
 
     if con_article:
-        for link in con_article.find_all('a'):
+        for link in set(con_article.find_all('a')):
             printArticle(link.get('href'))
     
