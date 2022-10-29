@@ -3,7 +3,6 @@ inputType = Enum('inputType', ['INTERESTED_IN', 'NOT_INTERESTED_IN', 'URLS'])
 
 def writeListToFile(list, inputType):
     newFile = createFile(inputType)
-    print(inputType)
     with newFile as file:
         for item in list:
             file.write("%s\n" % item)
@@ -11,7 +10,6 @@ def writeListToFile(list, inputType):
 
 def createListFromFile(inputType):
     inputFile = readFile(inputType)
-    print(inputType)
     with inputFile as file:
         lines = [line.rstrip() for line in file]
         file.close()

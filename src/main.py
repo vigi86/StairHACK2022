@@ -13,6 +13,6 @@ writeListToFile(getTheUsersInterests(), inputType.INTERESTED_IN)
 print("What would you rather not see?")
 writeListToFile(getTheUsersInterests(), inputType.NOT_INTERESTED_IN)
 
-print(createListFromFile(inputType.INTERESTED_IN))
+print(createListFromFile(inputType.URLS))
 
 print("----------------------------------END-------------------------------------")
