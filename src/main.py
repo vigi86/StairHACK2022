@@ -1,4 +1,4 @@
-from helpers import getTheUsersIntrests
+from helpers import getTheUsersInterests
 from fileHandler import writeListToFile, createListFromFile, inputType
 
 # greetings to the user
@@ -7,12 +7,12 @@ print("Welcome to TrueNews")
 
 # get the users intrests
 print("What are you you interested in? (enter q to quit)")
-writeListToFile(getTheUsersInterests(), inputType.LIKES)
+writeListToFile(getTheUsersInterests(), inputType.INTERESTED_IN)
 
 # get what the user would rather not see
 print("What would you rather not see?")
-writeListToFile(getTheUsersInterests(), inputType.DISLIKES)
+writeListToFile(getTheUsersInterests(), inputType.NOT_INTERESTED_IN)
 
-print(createListFromFile(inputType.LIKES))
+print(createListFromFile(inputType.INTERESTED_IN))
 
 print("----------------------------------END-------------------------------------")
