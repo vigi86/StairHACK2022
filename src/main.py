@@ -1,3 +1,4 @@
+from tkinter import N
 from dialogHelpers import askForUserInterestsDialog, printCurrentInterests, askForReconfiguration
 from fileHandler import userInputFilesExisting, createListFromFile, inputType
 import spider

@@ -4,7 +4,7 @@ import spider
 url = 'https://www.cbsnews.com/health/'
 
 # how to use getRelevantUrls
-interestedIn = ["facebook"]
+interestedIn = ["cbsnews"]
 notInterestedIn = ["twitter"]
 
 relevantUrls = spider.getRelevantUrls(spider.getSoupPerUrl(url), interestedIn, notInterestedIn)
