@@ -6,8 +6,8 @@ def writeListToFile(list, inputType):
     with newFile as file:
         for item in list:
             file.write("%s\n" % item)
-            file.close()
-
+        file.close()
+            
 def createListFromFile(inputType):
     inputFile = readFile(inputType)
     with inputFile as file:
@@ -15,7 +15,6 @@ def createListFromFile(inputType):
         file.close()
     return lines
 
-    
 def createFile(inputType):
     return open(getFileName(inputType), "w")
 
