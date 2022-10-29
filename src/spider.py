@@ -1,6 +1,4 @@
 from queue import Empty
-import re
-from types import NoneType
 import requests
 import crawlCbsNews
 import filter
