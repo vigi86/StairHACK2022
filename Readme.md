@@ -1,4 +1,4 @@
-# True news
+# NewsRazor
 ## Description
 - This application provides news from selected ressources.
 - The results of your search are depending on your filters.
