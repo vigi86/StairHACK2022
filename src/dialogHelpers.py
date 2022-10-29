@@ -4,10 +4,12 @@ def askForUserInterestsDialog():
     # get the users interests
     print("What are you you interested in? (enter q to quit)")
     writeListToFile(getTheUsersInterests(), inputType.INTERESTED_IN)
+    print()
 
     # get what the user would rather not see
     print("What would you rather not see?")
     writeListToFile(getTheUsersInterests(), inputType.NOT_INTERESTED_IN)
+    print()
 
 def getTheUsersInterests():
     userInput = input("Enter a topic: ")
@@ -25,8 +27,10 @@ def getTheUsersInterests():
 def printCurrentInterests():
     print("you are currently INTERESTED in: ")
     print(*createListFromFile(inputType.INTERESTED_IN), sep= ", ")
+    print()
     print("you are currently NOT INTERESTED in: ")
     print(*createListFromFile(inputType.NOT_INTERESTED_IN), sep= ", ")
+    print()
 
 # returns true when reconfiguration is wished by user
 def askForReconfiguration():

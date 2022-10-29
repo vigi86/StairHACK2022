@@ -8,12 +8,6 @@ appName = "TrueNews"
 # TODO: maybe add asking for username
 print("Welcome to " + appName)
 
-
-# greetings to the user
-print("Welcome to TrueNews")
-
-# maybe add asking for username
-
 # check configuration and ask on how to continue
 if not userInputFilesExisting():
     askForUserInterestsDialog()
@@ -22,6 +16,7 @@ else:
     if askForReconfiguration():
         askForUserInterestsDialog()
 
+print()
 print("Thank you for your inputs.")
 print("We are about to provide a list of articles, which fits your interests.")
 baseUrls = createListFromFile(inputType.URLS)
