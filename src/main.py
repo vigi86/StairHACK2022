@@ -1,14 +1,19 @@
+from helpers import getTheUsersIntrests
 
-import string
-
+# greetings to the user
+# maybe add asking for username
 print("Welcome to TrueNews")
+
+# get the users intrests
 print("What are you you interested in? (enter q to quit)")
+intrestedIn = getTheUsersIntrests()
+print(*intrestedIn, sep=",")
 
-topic = input("Enter a topic:")
-topics_list = []
-while topic != "q":
-        topics_list.append(topic) if topic.isalpha() else print("Input should be alphabetical!")
-        topic = input('Enter a topic:')
-
+# get waht the user would rather not see
 print("What would you rather not see?")
-print("Finished")
+ratherNotSee = getTheUsersIntrests()
+print(*ratherNotSee, sep=",")
+
+
+
+print("----------------------------------END-------------------------------------")
