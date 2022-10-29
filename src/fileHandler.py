@@ -1,35 +1,46 @@
 from enum import Enum
 import os
+
 inputType = Enum('inputType', ['INTERESTED_IN', 'NOT_INTERESTED_IN', 'URLS', 'IGNORE_BY_DEFAULT'])
 
-def writeListToFile(list, inputType):
-    newFile = createFile(inputType)
+def writeListToFile(list, inputType, user):
+    newFile = createFile(inputType, user)
     with newFile as file:
         for item in list:
             file.write("%s\n" % item)
         file.close()
             
-def createListFromFile(inputType):
-    inputFile = readFile(inputType)
+def createListFromFile(inputType, user):
+    inputFile = readFile(inputType, user)
     with inputFile as file:
         lines = [line.rstrip() for line in file]
         file.close()
     return lines
 
-def createFile(inputType):
-    return open(getFileName(inputType), "w")
+def createIgnoredByDefaultList():
+    inputFile = readDefaultFile()
+    with inputFile as file:
+        lines = [line.rstrip() for line in file]
+        file.close()
+    return lines
 
-def readFile(inputType):
-    return open(getFileName(inputType), "r")
+def createFile(inputType, user):
+    return open(getFileName(inputType, user), "w")
 
-def userInputFilesExisting():
-    return os.path.isfile(getFileName(inputType.INTERESTED_IN)) and os.path.isfile(getFileName(inputType.NOT_INTERESTED_IN))
+def readFile(inputType, user):
+    return open(getFileName(inputType, user), "r")
 
-def getFileName(inputType):
+def readDefaultFile(inputType = inputType.IGNORE_BY_DEFAULT, user = None):
+    return open(getFileName(inputType, user))
+
+def userInputFilesExisting(user):
+    return os.path.isfile(getFileName(inputType.INTERESTED_IN, user)) and os.path.isfile(getFileName(inputType.NOT_INTERESTED_IN, user))
+
+def getFileName(inputType, user):
     if inputType == inputType.INTERESTED_IN:
-        return "userInput/interestedIn.txt"
+        return "userInput/" + user + "_interestedIn.txt"
     elif inputType == inputType.NOT_INTERESTED_IN:
-        return "userInput/notInterestedIn.txt"
+        return "userInput/" + user + "_notInterestedIn.txt"
     elif inputType == inputType.URLS:
         return "config/urls.txt"
     elif inputType == inputType.IGNORE_BY_DEFAULT:

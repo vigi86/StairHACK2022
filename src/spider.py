@@ -1,7 +1,7 @@
 import requests
 import filter
 from bs4 import BeautifulSoup
-from fileHandler import createListFromFile, inputType
+from fileHandler import createIgnoredByDefaultList
 
 # baseUrls:         list(str)   base urls of the webpages one is interested in
 # interestedIn:     list(str)   topics / keywords which MUST be in the url (ignored if empty)
@@ -37,7 +37,7 @@ def getSoupPerUrl(url):
 # return:           list(str)       filtered url list
 def crawlRelevantUrlsPerSoup(soup, interestedIn, notInterestedIn):
     urls = list(map(lambda x: x['href'], soup.find_all('a', href=True)))
-    urls = filter.findStringsNotContainingKeywords(urls, createListFromFile(inputType.IGNORE_BY_DEFAULT))
+    urls = filter.findStringsNotContainingKeywords(urls, createIgnoredByDefaultList())
     if interestedIn != []:
         urls = filter.findStringsContainingKeyword(urls, interestedIn)
     if notInterestedIn != []:
