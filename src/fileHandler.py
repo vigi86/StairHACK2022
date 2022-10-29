@@ -1,6 +1,6 @@
 from enum import Enum
 import os
-inputType = Enum('inputType', ['INTERESTED_IN', 'NOT_INTERESTED_IN', 'URLS'])
+inputType = Enum('inputType', ['INTERESTED_IN', 'NOT_INTERESTED_IN', 'URLS', 'IGNORE_BY_DEFAULT'])
 
 def writeListToFile(list, inputType):
     newFile = createFile(inputType)
@@ -32,4 +32,6 @@ def getFileName(inputType):
         return "userInput/notInterestedIn.txt"
     elif inputType == inputType.URLS:
         return "config/urls.txt"
+    elif inputType == inputType.IGNORE_BY_DEFAULT:
+        return "config/ignoreByDefault.txt"
     print('inputType ' + inputType + ' not existing')
