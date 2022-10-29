@@ -18,7 +18,6 @@ def printArticle(url):
         # do nothing and continue fetch
         var = 0
 
-
 def printRelatedArticles(url):
     httpResponse = requests.get(url)
     soup = BeautifulSoup(httpResponse.content, 'html.parser')
