@@ -1,6 +1,6 @@
 # NewsRazor
 ## Description
-- This application provides news from selected ressources.
+- This application provides news from selected ressources and "razors" the news down to what interests you
 - The results of your search are depending on your filters.
 - You will be asked for the filters when launching the application. It's possible to overwrite these filters on each restart if required.
 - You can log in with different usernames to prevent others from overwriting your filters.

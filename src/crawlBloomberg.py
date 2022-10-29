@@ -19,11 +19,5 @@ def printArticle(url):
         var = 0
 
 def printRelatedArticles(url):
-    httpResponse = requests.get(url)
-    soup = BeautifulSoup(httpResponse.content, 'html.parser')
-    
-    con_article = soup.find(class_="ContentRoll")
-
-    if con_article:
-        for link in set(con_article.find_all('a')):
-            printArticle(link.get('href'))
+    a = 1
+    # not required

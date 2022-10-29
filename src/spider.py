@@ -1,7 +1,10 @@
+import imp
 from queue import Empty
 import requests
 import crawlCbsNews
 import crawlAbcNews
+import crawlBloomberg
+import crawlCnbcNews
 import filter
 from bs4 import BeautifulSoup
 from fileHandler import createIgnoredByDefaultList
@@ -19,14 +22,14 @@ def webpageNotSupported(url):
     print("We are sorry, this webpage is not supported: " + url)
     
 def flattenUrlList(urlsPerBaseUrls, baseUrls):
-    flatList = []
+    flatList = set([])
     index = 0
     for urls in urlsPerBaseUrls:
         for url in urls:
             if url.startswith("/"):
-                flatList.append(baseUrls[index] + url)
+                flatList.add(baseUrls[index] + url)
             else:    
-                flatList.append(url)
+                flatList.add(url)
         index += 1 
     return flatList
 
@@ -42,7 +45,7 @@ def getSoupPerUrl(url):
 # notInterestedIn:  list(str)       topics / keywords which MUST NOT be in the url (ignored if empty)
 # return:           list(str)       filtered url list
 def crawlRelevantUrlsPerSoup(soup, interestedIn, notInterestedIn):
-    urls = list(map(lambda x: x['href'], soup.find_all('a', href=True)))
+    urls = set(map(lambda x: x['href'], soup.find_all('a', href=True)))
     return filterUrls(urls, interestedIn, notInterestedIn)
 
 def filterUrls(urls, interestedIn, notInterestedIn):
@@ -55,11 +58,17 @@ def filterUrls(urls, interestedIn, notInterestedIn):
 
 def readNewsPage(url):
     if url.startswith("https://www.cbsnews.com"):
-        crawlCbsNews.printArticle(url)
+       # crawlCbsNews.printArticle(url)
         crawlCbsNews.printRelatedArticles(url)
-    if url.startswith("https://abcnews.go.com"):
-        crawlAbcNews.printArticle(url)
+    elif url.startswith("https://abcnews.go.com"):
+       # crawlAbcNews.printArticle(url)
         crawlAbcNews.printRelatedArticles(url)
+    elif url.startswith("https://www.bloomberg.com"):
+       # crawlBloomberg.printArticle(url)
+        crawlBloomberg.printRelatedArticles(url)
+    elif url.startswith("https://www.cnbc.com"):
+       # crawlCnbcNews.printArticle(url)
+        crawlCnbcNews.printRelatedArticles(url)
     else:
         webpageNotSupported(url)
         
