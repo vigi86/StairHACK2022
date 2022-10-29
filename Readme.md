@@ -32,6 +32,7 @@ In order to add support for new pages, you need to do the following:
    - implement at least the functions
      - printArticle(url)
      - printRelatedArticles(url)
+   - inspect the webpage to figure out how the elements are added
    - make sure to search for the "h1" tag, since we want to display the headlines
 4. finally, in "spider.py" file, connect the support in the functions at the pottom of the file.
    - at the example of "readNewsPage(url)":
@@ -41,3 +42,4 @@ In order to add support for new pages, you need to do the following:
           yourCrawler.printArticle(url)
           yourCrawler.printRelatedArticles(url)
         ```
+[Example Commit](https://github.com/vigi86/StairHACK2022/commit/7de963f7a23658ac7001c336d928e7ba91e4b8cb)
