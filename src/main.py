@@ -1,4 +1,4 @@
-from helpers import getTheUsersIntrests
+from helpers import getTheUsersInterests
 from fileHandler import writeListToFile, createListFromFile
 from enum import Enum
 
@@ -10,10 +10,10 @@ print("Welcome to TrueNews")
 
 # get the users intrests
 print("What are you you interested in? (enter q to quit)")
-writeListToFile(getTheUsersIntrests(), inputType.LIKES)
+writeListToFile(getTheUsersInterests(), inputType.LIKES)
 
 # get what the user would rather not see
 print("What would you rather not see?")
-writeListToFile(getTheUsersIntrests(), inputType.DISLIKES)
+writeListToFile(getTheUsersInterests(), inputType.DISLIKES)
 
 print("----------------------------------END-------------------------------------")

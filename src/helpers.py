@@ -1,4 +1,4 @@
-def getTheUsersIntrests():
+def getTheUsersInterests():
     userInput = input("Enter a topic:")
     userInputList = []
     while userInput != "q":
