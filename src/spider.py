@@ -5,7 +5,7 @@ import requests
 import crawlCbsNews
 import filter
 from bs4 import BeautifulSoup
-from fileHandler import createListFromFile, inputType
+from fileHandler import createIgnoredByDefaultList
 
 # baseUrls:         list(str)   base urls of the webpages one is interested in
 # interestedIn:     list(str)   topics / keywords which MUST be in the url (ignored if empty)
@@ -47,7 +47,7 @@ def crawlRelevantUrlsPerSoup(soup, interestedIn, notInterestedIn):
     return filterUrls(urls, interestedIn, notInterestedIn)
 
 def filterUrls(urls, interestedIn, notInterestedIn):
-    urls = filter.findStringsNotContainingKeywords(urls, createListFromFile(inputType.IGNORE_BY_DEFAULT))
+    urls = filter.findStringsNotContainingKeywords(urls, createIgnoredByDefaultList())
     if interestedIn != []:
         urls = filter.findStringsContainingKeyword(urls, interestedIn)
     if notInterestedIn != []:

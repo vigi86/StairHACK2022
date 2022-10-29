@@ -1,32 +1,33 @@
 from tkinter import N
-from dialogHelpers import askForUserInterestsDialog, printCurrentInterests, askForReconfiguration
+from dialogHelpers import askForUserInterestsDialog, printCurrentInterests, askForReconfiguration, askForUserNameDialog
 from fileHandler import userInputFilesExisting, createListFromFile, inputType
 import spider
 
 appName = "TrueNews"
 
+#ask for the username
+user = askForUserNameDialog()
 # greetings to the user
-# TODO: maybe add asking for username
-print("Welcome to " + appName)
+print("Welcome to " + appName + ", " + user + "\n")
 
 # check configuration and ask on how to continue
-if not userInputFilesExisting():
-    askForUserInterestsDialog()
+if not userInputFilesExisting(user):
+    askForUserInterestsDialog(user)
 else:
-    printCurrentInterests()
+    printCurrentInterests(user)
     if askForReconfiguration():
-        askForUserInterestsDialog()
+        askForUserInterestsDialog(user)
 
 print()
 print("Thank you for your inputs.")
 print("We are about to provide a list of articles, which fits your interests.")
-baseUrls = createListFromFile(inputType.URLS)
+baseUrls = createListFromFile(inputType.URLS, user)
 print("The following news pages are supported: ")
 for baseUrl in baseUrls:
     print(baseUrl)
 print()
 
-allRelevantUrls = spider.crawlAllRelevantUrls(baseUrls, createListFromFile(inputType.INTERESTED_IN), createListFromFile(inputType.NOT_INTERESTED_IN))
+allRelevantUrls = spider.crawlAllRelevantUrls(baseUrls, createListFromFile(inputType.INTERESTED_IN, user), createListFromFile(inputType.NOT_INTERESTED_IN, user))
 
 print("Your results:")
 for url in allRelevantUrls:
