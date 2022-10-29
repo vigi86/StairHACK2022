@@ -7,11 +7,11 @@ print("Welcome to TrueNews")
 
 # get the users intrests
 print("What are you you interested in? (enter q to quit)")
-writeListToFile(getTheUsersIntrests(), inputType.LIKES)
+writeListToFile(getTheUsersInterests(), inputType.LIKES)
 
 # get what the user would rather not see
 print("What would you rather not see?")
-writeListToFile(getTheUsersIntrests(), inputType.DISLIKES)
+writeListToFile(getTheUsersInterests(), inputType.DISLIKES)
 
 print(createListFromFile(inputType.LIKES))
 
