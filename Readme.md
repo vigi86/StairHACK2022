@@ -3,6 +3,7 @@
 * filter *for* specific topics
 * filter *out* specific topics
 * find positive news only
+* multiuser capability
 
 
 
