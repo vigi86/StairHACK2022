@@ -1,4 +1,5 @@
 from enum import Enum
+import os
 inputType = Enum('inputType', ['INTERESTED_IN', 'NOT_INTERESTED_IN', 'URLS', 'IGNORE_BY_DEFAULT'])
 
 def writeListToFile(list, inputType):
@@ -20,6 +21,9 @@ def createFile(inputType):
 
 def readFile(inputType):
     return open(getFileName(inputType), "r")
+
+def userInputFilesExisting():
+    return os.path.isfile(getFileName(inputType.INTERESTED_IN)) and os.path.isfile(getFileName(inputType.NOT_INTERESTED_IN))
 
 def getFileName(inputType):
     if inputType == inputType.INTERESTED_IN:
