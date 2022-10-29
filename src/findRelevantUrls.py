@@ -14,7 +14,9 @@ filterFor = ['CBSNews']
 filterOut = ['twitter']
 
 links = map(lambda x: x['href'], soup.find_all('a', href=True))
-links = filter.onlyStringsWithKeyword(links, filterFor)
+links = filter.onlyStringsWithAnyOfKeywords(links, filterFor)
+links = filter.onlyStringsWithoutAnyOfKeywords(links, filterOut)
+
 for link in links:
     print(link)
     
