@@ -23,9 +23,9 @@ def readFile(inputType):
 
 def getFileName(inputType):
     if inputType == inputType.INTERESTED_IN:
-        return "interestedIn.txt"
+        return "userInput/interestedIn.txt"
     elif inputType == inputType.NOT_INTERESTED_IN:
-        return "notInterestedIn.txt"
+        return "userInput/notInterestedIn.txt"
     elif inputType == inputType.URLS:
-        return "urls.txt"
+        return "config/urls.txt"
     print('inputType ' + inputType + ' not existing')
