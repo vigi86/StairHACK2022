@@ -3,6 +3,5 @@
 /advertising
 /cookies
 /policy
-/pictures
 /terms-of-use
 /app/?

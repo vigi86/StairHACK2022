@@ -31,10 +31,10 @@ allRelevantUrls = spider.crawlAllRelevantUrls(baseUrls, createListFromFile(input
 
 print("Your results:")
 for url in allRelevantUrls:
-    print(url)
+    spider.readNewsPage(url)
 print()
 
-print("----------------------------------END-------------------------------------")
+print("--------------------------------- END ------------------------------------")
 print()
 
 print("Thanks for using " + appName + "!")
