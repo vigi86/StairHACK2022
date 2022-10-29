@@ -2,23 +2,35 @@ from fileHandler import writeListToFile, inputType, createListFromFile
 
 def askForUserInterestsDialog(user):
     # get the users interests
-    print("What are you you interested in? (enter q to quit)")
-    writeListToFile(getTheUsersInterests(), inputType.INTERESTED_IN, user)
+    print("What are you interested in? (enter q to quit)")
+    writeListToFile(getTheUsersInterests(True), inputType.INTERESTED_IN, user)
     print()
 
     # get what the user would rather not see
     print("What would you rather not see?")
-    writeListToFile(getTheUsersInterests(), inputType.NOT_INTERESTED_IN, user)
+    writeListToFile(getTheUsersInterests(False), inputType.NOT_INTERESTED_IN, user)
     print()
-
-def getTheUsersInterests():
-    userInput = input("Enter a topic: ")
+    
+def getTheUsersInterests(minOneTopicRequired):
+    oneRequired = ""
+    if minOneTopicRequired:
+        oneRequired = "(min 1 is required) "
+    userInput = input("Enter a topic: " + oneRequired)
     userInputList = []
-    while userInput != "q":
-        if userInput == "":
+    
+    minOneTopicProvided = True
+    if minOneTopicRequired:
+        minOneTopicProvided = False
+    while userInput != "q" or not minOneTopicProvided:
+        if userInput == "q" and not minOneTopicProvided:
+            print("At least one topic need to be provided")  
+        elif userInput == "":
+            print("Input must not be empty.")
+        elif all(x.isspace() for x in userInput):
             print("Input must not be empty.")
         elif all(x.isalpha() or x.isspace() for x in userInput):
             userInputList.append(userInput) 
+            minOneTopicProvided = True
         else:
             print("Input must be alphabetical!")
         userInput = input("Enter a topic: ")
