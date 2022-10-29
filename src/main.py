@@ -1,5 +1,5 @@
-from helpers import getTheUsersInterests
-from fileHandler import writeListToFile, createListFromFile, inputType
+from dialogHelpers import askForUserInterestsDialog, printCurrentInterests, askForReconfiguration
+from fileHandler import userInputFilesExisting, createListFromFile, inputType
 import spider
 
 appName = "TrueNews"
@@ -7,18 +7,16 @@ appName = "TrueNews"
 # greetings to the user
 # TODO: maybe add asking for username
 print("Welcome to " + appName)
-print()
 
-# get the users interests
-print("What are you interested in? (enter q to quit)")
-writeListToFile(getTheUsersInterests(), inputType.INTERESTED_IN)
-print()
+# check configuration and ask on how to continue
+if not userInputFilesExisting():
+    askForUserInterestsDialog()
+else:
+    printCurrentInterests()
+    if askForReconfiguration():
+        askForUserInterestsDialog()
 
-# get what the user would rather not see
-print("What would you rather not see?")
-writeListToFile(getTheUsersInterests(), inputType.NOT_INTERESTED_IN)
 print()
-
 print("Thank you for your inputs.")
 print("We are about to provide a list of articles, which fits your interests.")
 baseUrls = createListFromFile(inputType.URLS)
